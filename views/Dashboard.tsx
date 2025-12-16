@@ -3,15 +3,12 @@ import {
   BarChart, 
   Bar, 
   XAxis, 
-  YAxis, 
   CartesianGrid, 
   Tooltip, 
   ResponsiveContainer,
-  AreaChart,
-  Area,
   Legend
 } from 'recharts';
-import { Leaf, Recycle, Scale, TrendingUp, FileCheck } from 'lucide-react';
+import { Leaf, Recycle, Scale } from 'lucide-react';
 
 const DATA = [
   { month: 'Jun', acu: 120, fog: 45, co2: 340 },
@@ -47,14 +44,14 @@ export const Dashboard: React.FC = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white">Panel de Impacto</h1>
-          <p className="text-gray-400 text-sm">Visión general de trazabilidad y métricas LCA</p>
+          <p className="text-gray-400 text-sm">Visión general de trazabilidad y métricas de generación</p>
         </div>
         <button className="bg-primary text-black hover:bg-emerald-400 px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-[0_0_15px_rgba(16,185,129,0.2)]">
           Exportar Reporte Ambiental
         </button>
       </div>
 
-      {/* KPI Grid - Adjusted to 3 columns since we removed the blockchain card */}
+      {/* KPI Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <StatCard 
           title="Residuos Gestionados" 
@@ -78,68 +75,31 @@ export const Dashboard: React.FC = () => {
         />
       </div>
 
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-surface border border-border rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
-            <Leaf size={16} className="text-primary" />
-            Análisis de Ciclo de Vida (LCA)
-          </h3>
-          <div className="h-[300px] w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={DATA}>
-                <defs>
-                  <linearGradient id="colorCo2" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
-                  </linearGradient>
-                </defs>
+      {/* Charts Section - Adjusted to single full-width chart */}
+      <div className="bg-surface border border-border rounded-xl p-6">
+        <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+          <Recycle size={16} className="text-secondary" />
+          CANTIDAD GENERADA PROMEDIO EN KG/mes
+        </h3>
+        <div className="h-[400px] w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={DATA} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#27272a" vertical={false} />
-                <XAxis dataKey="month" stroke="#71717a" fontSize={12} tickLine={false} axisLine={false} />
-                <YAxis stroke="#71717a" fontSize={12} tickLine={false} axisLine={false} />
-                <Tooltip 
-                  contentStyle={{ backgroundColor: '#09090b', borderColor: '#27272a', borderRadius: '8px' }}
-                  itemStyle={{ color: '#e4e4e7' }}
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="co2" 
-                  stroke="#10b981" 
-                  strokeWidth={2}
-                  fillOpacity={1} 
-                  fill="url(#colorCo2)" 
-                  name="CO2 Evitado (kg)"
-                />
-              </AreaChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        <div className="bg-surface border border-border rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
-            <Recycle size={16} className="text-secondary" />
-            Tipo de Residuo
-          </h3>
-          <div className="h-[300px] w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={DATA}>
-                 <CartesianGrid strokeDasharray="3 3" stroke="#27272a" vertical={false} />
-                <XAxis dataKey="month" stroke="#71717a" fontSize={12} tickLine={false} axisLine={false} />
-                <Tooltip 
-                  cursor={{fill: '#27272a'}}
-                  contentStyle={{ backgroundColor: '#09090b', borderColor: '#27272a', borderRadius: '8px' }}
-                />
-                <Legend 
-                  verticalAlign="top" 
-                  height={36} 
-                  iconType="circle"
-                  formatter={(value) => <span style={{ color: '#9ca3af', fontSize: '12px' }}>{value}</span>}
-                />
-                <Bar dataKey="acu" fill="#D4AF37" radius={[4, 4, 0, 0]} name="Aceites (ACU)" />
-                <Bar dataKey="fog" fill="#f59e0b" radius={[4, 4, 0, 0]} name="Grasas (FOG)" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
+              <XAxis dataKey="month" stroke="#71717a" fontSize={12} tickLine={false} axisLine={false} />
+              <Tooltip 
+                cursor={{fill: '#27272a'}}
+                contentStyle={{ backgroundColor: '#09090b', borderColor: '#27272a', borderRadius: '8px' }}
+              />
+              <Legend 
+                verticalAlign="top" 
+                height={36} 
+                iconType="circle"
+                formatter={(value) => <span style={{ color: '#9ca3af', fontSize: '12px' }}>{value}</span>}
+              />
+              <Bar dataKey="acu" fill="#D4AF37" radius={[4, 4, 0, 0]} name="Aceites (ACU)" />
+              <Bar dataKey="fog" fill="#f59e0b" radius={[4, 4, 0, 0]} name="Grasas (FOG)" />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </div>

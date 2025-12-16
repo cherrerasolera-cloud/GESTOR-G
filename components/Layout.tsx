@@ -6,8 +6,7 @@ import {
   FileCheck, 
   Users, 
   Menu, 
-  X,
-  Leaf
+  X
 } from 'lucide-react';
 import { NavItem } from '../types';
 
@@ -33,10 +32,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeView, onChangeVi
       {/* Sidebar Desktop */}
       <aside className="hidden md:flex flex-col w-64 border-r border-border bg-surface/50 backdrop-blur-sm fixed h-full z-20">
         <div className="p-6 flex items-center gap-3 border-b border-border">
-          <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
-            <Leaf size={20} />
-          </div>
-          <span className="font-semibold text-white tracking-tight">Gestor G</span>
+          <span className="font-semibold text-white tracking-tight text-lg">Gestor G</span>
         </div>
         
         <nav className="flex-1 py-6 px-3 space-y-1">
@@ -70,8 +66,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeView, onChangeVi
       {/* Mobile Header */}
       <div className="md:hidden fixed top-0 w-full z-30 bg-background/80 backdrop-blur-md border-b border-border p-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <Leaf size={20} className="text-primary" />
-          <span className="font-bold text-white">Gestor G</span>
+          <span className="font-bold text-white text-lg">Gestor G</span>
         </div>
         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

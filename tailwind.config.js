@@ -8,11 +8,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#09090b', // Zinc 950 (Gris oscuro fondo)
-        surface: '#18181b',    // Zinc 900 (Gris superficie)
-        border: '#27272a',     // Zinc 800 (Gris bordes)
-        primary: '#10b981',    // Emerald 500 (Verde Eco/Acción)
-        secondary: '#D4AF37',  // Gold (Dorado Premium/Valor)
+        background: '#262626', // Neutral 800 (Gris sólido amigable)
+        surface: '#404040',    // Neutral 700 (Superficie gris más clara)
+        border: '#525252',     // Neutral 600 (Bordes suaves)
+        primary: '#10b981',    // Emerald 500
+        secondary: '#D4AF37',  // Gold
         gold: {
           400: '#FACC15',
           500: '#EAB308',
