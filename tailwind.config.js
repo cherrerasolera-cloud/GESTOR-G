@@ -8,11 +8,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#262626', // Neutral 800 (Gris sólido amigable)
-        surface: '#404040',    // Neutral 700 (Superficie gris más clara)
-        border: '#525252',     // Neutral 600 (Bordes suaves)
+        background: '#f9fafb', // Gray 50 (Fondo claro)
+        surface: '#ffffff',    // White (Tarjetas blancas)
+        border: '#e5e7eb',     // Gray 200 (Bordes sutiles)
         primary: '#10b981',    // Emerald 500
-        secondary: '#D4AF37',  // Gold
+        secondary: '#d97706',  // Amber 600 (Ajustado para mejor contraste en blanco)
         gold: {
           400: '#FACC15',
           500: '#EAB308',
